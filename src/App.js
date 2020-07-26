@@ -12,38 +12,61 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      text:'Sylani my jan',
-      condition:true
+      // text:'Sylani my jan',
+      // condition:true
     }
   }
 
-updateState(){
-  if(this.state.condition){
+// updateState(){
+//   if(this.state.condition){
 
-    this.setState({
-      text:'I love Sylani',
-      condition: false
+//     this.setState({
+//       text:'I love Sylani',
+//       condition: false
+//     })
+//   }
+//   else{
+//     this.setState({
+//       text:'Sylani meri jaan!',
+//       condition: true
+//     })
+//   }
+// }
+// checkJSX(){
+//   return(
+//     <h1>JSX Work ..........!</h1>
+//   )
+// }
+
+    updateState(){
+      console.log("one");
+      if(this.state.condition){
+        console.log("two");
+        this.setState({
+       text:'Sylani Pakistan',
+      //  condition: false
+condition: !this.state.condition
     })
-  }
-  else{
-    this.setState({
-      text:'Sylani meri jaan!',
-      condition: true
-    })
-  }
-}
-checkJSX(){
-  return(
-    <h1>JSX Work ..........!</h1>
-  )
-}
+      }
+      else{
+        console.log("hello");
+        this.setState({
+        text: "Sylani meri jaan",
+          condition: true
+        })
+      }
+    }
+
 
   render() {
     return (
       <div>
-      <h1>{this.state.text}</h1>
+      {/* <h1>{this.state.text}</h1>
         <button onClick={()=>{this.updateState()}}>Hello Btn</button>
-        <p>{this.checkJSX()}</p>
+        <p>{this.checkJSX()}</p> */}
+
+        <h1>{this.state.text}</h1>
+        <button onClick={()=>{this.updateState()}}>Hello Btn</button>
       </div>
     );
   }
