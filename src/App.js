@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 //every component one(own) state
 //function two purpose 
 //1.JSX render
-//2.Event apply in function
+//2.Event apply in function fire
 //Component mein jitna bhi functions bana ga wo direct access nhi hongy this ka sath acccess honga
 
 class App extends Component {
@@ -14,6 +14,10 @@ class App extends Component {
     this.state={
       // text:'Sylani my jan',
       // condition:true
+      // family:{
+      //   brother: 3,
+        
+      // }
     }
   }
 
@@ -38,6 +42,8 @@ class App extends Component {
 //   )
 // }
 
+
+//super call component constructor
     updateState(){
       console.log("one");
       if(this.state.condition){
@@ -45,7 +51,11 @@ class App extends Component {
         this.setState({
        text:'Sylani Pakistan',
       //  condition: false
-condition: !this.state.condition
+condition: !this.state.condition,
+family:{
+  brother: 3,
+  
+}
     })
       }
       else{
@@ -67,6 +77,7 @@ condition: !this.state.condition
 
         <h1>{this.state.text}</h1>
         <button onClick={()=>{this.updateState()}}>Hello Btn</button>
+        <p>{this.state.family && this.state.family.brother }</p>
       </div>
     );
   }
