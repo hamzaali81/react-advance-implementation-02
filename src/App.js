@@ -23,6 +23,10 @@ class App extends Component {
 
       // }
       // text: 'Zebra'
+
+list:['beef','kabab','tika','karai'],
+result:[]
+
     }
   // this.stateUpdate=this.stateUpdate.bind(this);
   // this.stateUpdate=this.stateUpdate.bind(this);
@@ -31,12 +35,9 @@ class App extends Component {
 
 
 
-stateUpdate(el){
-  console.log("hello",this);
-  // this.setState({
-    
-  // })
-}
+// stateUpdate(el){
+//   console.log("hello",this);
+// }
 // updateState(){
 //   if(this.state.condition){
 
@@ -93,9 +94,32 @@ stateUpdate(el){
   
 //   }
 
+search(e){
+  // this.setState({
 
+  // })
+  // console.log(this);
+  // console.log('***p',e.target.value);
+  // console.log('***p',e);
+//Assignment param mein se event kesa milaga
+const {list}=this.state;
+const result = list.filter((lists)=>{
+  //  return lists == e.target.value
+   return lists.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1
+  
+  })
+console.log(result);
 
+this.setState({
+  result
+})
+}
+// function three availability
+//1.{} braces
   render() {
+
+    const {list,result}=this.state;
+    const items = result.length ? result : list ;
     return (
       <div>
 {/* <h1>{this.state.text}</h1> */}
@@ -104,7 +128,8 @@ stateUpdate(el){
 
 {/* function mein onclick ka mila ga ar () mein component ka mila ga return*/}
 {/* <button onClick={this.stateUpdate}>Click Me</button> */}
-<button onClick={this.stateUpdate.bind(this,"hello")}>Click Me</button>
+{/* <button onClick={this.stateUpdate.bind(this,"hello")}>Click Me</button>
+<button onClick={this.stateUpdate.bind(this,"hello")}>Click Me</button> */}
 
       {/* <h1>{this.state.text}</h1>
         <button onClick={()=>{this.updateState()}}>Hello Btn</button>
@@ -114,6 +139,15 @@ stateUpdate(el){
         {/* <button onClick={()=>{this.updateState()}}>Hello Btn</button>
         <p>{this.state.family && this.state.family.brother }</p>
    <h2>{this.mainheader()}</h2> */}
+{/* const {list}=this.state; */}
+
+
+
+<input type="text" placeholder="Search food list" onChange={this.search.bind(this)}/>
+{/* <input type="text" placeholder="Search food list" onChange={this.search.bind(this)}/> */}
+<h1><ol>{items.map((el,index)=><li key={index}>{el}</li>)} 
+</ol></h1>
+
       </div>
     );
   }
