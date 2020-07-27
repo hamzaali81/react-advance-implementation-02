@@ -24,7 +24,7 @@ class App extends Component {
       // }
       // text: 'Zebra'
 
-list:['beef','kabab','tika','karai'],
+list:['beef','kabab','tika','karai','kabab beef'],
 result:[]
 
     }
@@ -103,23 +103,27 @@ search(e){
   // console.log('***p',e);
 //Assignment param mein se event kesa milaga
 const {list}=this.state;
+const text=e.target.value;
 const result = list.filter((lists)=>{
   //  return lists == e.target.value
-   return lists.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1
+  const lowerItem= lists.toLowerCase();
+  const lowerText=text.toLowerCase();
+   return lowerItem.substring(0,lowerText.length).toLowerCase().indexOf(text.toLowerCase()) != -1
   
   })
 console.log(result);
 
 this.setState({
-  result
+  result,text
 })
 }
 // function three availability
 //1.{} braces
   render() {
 
-    const {list,result}=this.state;
-    const items = result.length ? result : list ;
+    const {text,list,result}=this.state;
+    // const items = result.length ? result : list ;
+    const items = text ? result : list ;
     return (
       <div>
 {/* <h1>{this.state.text}</h1> */}
@@ -142,9 +146,9 @@ this.setState({
 {/* const {list}=this.state; */}
 
 
-
 <input type="text" placeholder="Search food list" onChange={this.search.bind(this)}/>
 {/* <input type="text" placeholder="Search food list" onChange={this.search.bind(this)}/> */}
+{text &&<h1>Bakra Eid list "{text}"</h1>}
 <h1><ol>{items.map((el,index)=><li key={index}>{el}</li>)} 
 </ol></h1>
 
